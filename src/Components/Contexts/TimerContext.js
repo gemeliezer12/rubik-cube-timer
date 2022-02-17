@@ -5,6 +5,8 @@ const TimerContext  = createContext()
 
 export const useTimer = () => useContext(TimerContext)
 
+const solves = []
+
 export const TimerProvider = ({children}) => {
     const [time, setTime] = useState(0)
     const [timerIsOn, setTimerIsOn] = useState(false)
@@ -23,12 +25,14 @@ export const TimerProvider = ({children}) => {
         else clearInterval(interval)
 
         return () => clearInterval(interval)
-
     }, [timerIsOn])
 
-    const stopTimer = (scramble) => {
+    const stopTimer = (solve) => {
+        solves.push(
+            solve
+        )
         setTimerIsOn(false)
-        console.log(scramble)
+        // localStorage.setItem()
     }
 
     const startTimer = () => {

@@ -5,7 +5,7 @@ const ThemeContext = createContext()
 export const useTheme = () => useContext(ThemeContext)
 
 export const ThemeProvider = ({children}) => {
-    const [theme, setTheme] = useState("dark")
+    const [theme, setTheme] = useState("light")
 
     // Get the theme setted from local storage once page is loaded and setThemeState to that theme
     useEffect(() => {

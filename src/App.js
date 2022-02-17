@@ -58,13 +58,13 @@ const App = () => {
                                             flexDirection: "column",
                                         }}>
                                             <p>
-                                                Avarage: 
+                                                Avarage: --
                                             </p>
                                             <p>
-                                                Best:
+                                                Best: --
                                             </p>
                                             <p>
-                                                Count:
+                                                Count: --
                                             </p>
                                         </div>
                                         <div style={{
