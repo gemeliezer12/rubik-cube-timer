@@ -1,6 +1,5 @@
 const CACHE_NAME = "version-1";
-// const urlsToCache = [ 'index.html', 'offline.html' ];
-let urlsToCache = ["/"]
+const urlsToCache = [ 'index.html', 'index.html' ];
 
 const self = this;
 
