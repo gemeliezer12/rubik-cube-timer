@@ -1,5 +1,5 @@
 const CACHE_NAME = "version-1";
-const urlsToCache = [ 'index.html', 'offline.html', "index.js" ];
+const urlsToCache = [ 'index.html', 'offline.html' ];
 
 const self = this;
 
@@ -31,8 +31,6 @@ self.addEventListener('fetch', (event) => {
 // Activate the SW
 self.addEventListener('activate', (event) => {
     const cacheWhitelist = [];
-
-    console.log(CACHE_NAME)
 
     event.waitUntil(
         caches.keys().then((cacheNames) => Promise.all(
