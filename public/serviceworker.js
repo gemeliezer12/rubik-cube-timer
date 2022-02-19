@@ -21,9 +21,7 @@ self.addEventListener('fetch', (event) => {
         caches.match(event.request)
             .then(() => {
                 return fetch(event.request) 
-                .catch(() => {caches.match('offline.html')
-                    console.log(caches)
-               } )
+                    .catch(() => caches.match('offline.html'))
             })
     )
 });
@@ -31,6 +29,8 @@ self.addEventListener('fetch', (event) => {
 // Activate the SW
 self.addEventListener('activate', (event) => {
     const cacheWhitelist = [];
+
+    console.log(CACHE_NAME)
 
     event.waitUntil(
         caches.keys().then((cacheNames) => Promise.all(
