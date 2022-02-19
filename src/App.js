@@ -9,7 +9,6 @@ import { ContextMenuProvider } from "./Components/Contexts/ContextMenuTemplate"
 import { PopUpProvider } from "./Components/Contexts/PopUpContext"
 import { ThemeProvider } from "./Components/Contexts/ThemeContext"
 
-import { useEffect, useState } from "react"
 
 const App = () => {
 

@@ -1,7 +1,7 @@
 const CACHE_NAME = "version-1";
-const urlsToCache = [ 'index.html', 'offline.html' ];
+const urlsToCache = [ 'index.html', 'offline.html', "index.js" ];
 
-// const self = this;
+const self = this;
 
 // Install SW
 self.addEventListener('install', (event) => {
@@ -21,7 +21,9 @@ self.addEventListener('fetch', (event) => {
         caches.match(event.request)
             .then(() => {
                 return fetch(event.request) 
-                    .catch(() => caches.match('offline.html'))
+                .catch(() => {caches.match('offline.html')
+                    console.log(caches)
+               } )
             })
     )
 });
@@ -29,13 +31,14 @@ self.addEventListener('fetch', (event) => {
 // Activate the SW
 self.addEventListener('activate', (event) => {
     const cacheWhitelist = [];
-    cacheWhitelist.push(CACHE_NAME);
+
+    console.log(CACHE_NAME)
 
     event.waitUntil(
         caches.keys().then((cacheNames) => Promise.all(
             cacheNames.map((cacheName) => {
-                if(!cacheWhitelist.includes(cacheName)) {
-                    return caches.delete(cacheName);
+                if (!cacheWhitelist.includes(cacheName)) {
+                    return caches.delete(cacheName)
                 }
             })
         ))

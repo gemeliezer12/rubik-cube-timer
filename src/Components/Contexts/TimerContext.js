@@ -5,8 +5,6 @@ const TimerContext  = createContext()
 
 export const useTimer = () => useContext(TimerContext)
 
-const solves = []
-
 export const TimerProvider = ({children}) => {
     const [time, setTime] = useState(0)
     const [timerIsOn, setTimerIsOn] = useState(false)
@@ -28,11 +26,13 @@ export const TimerProvider = ({children}) => {
     }, [timerIsOn])
 
     const stopTimer = (solve) => {
-        solves.push(
-            solve
-        )
         setTimerIsOn(false)
-        // localStorage.setItem()
+        const solves = JSON.parse(localStorage.getItem("solves"))
+        solves.push(solve)
+        console.log(solves)
+        console.log(
+            localStorage.setItem("solves", JSON.stringify([solves]))
+        )
     }
 
     const startTimer = () => {
